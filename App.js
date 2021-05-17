@@ -5,7 +5,11 @@ import * as Location from 'expo-location';
 export default function App() {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const feet = 3.28084;
 
+   // TODO:
+   // Write a function that uses Location.watchPositionAsync() to allow the user to set a loction using either longitiude
+   // and latitude or a city street name, to be refreshed every 5mins.
   useEffect(() => {
     (async () => {
       if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -31,8 +35,9 @@ export default function App() {
   } else if (location) {
     // text = JSON.stringify(location);
      text = `Your location is latitude: ${location.coords.latitude}, longitude: ${location.coords.longitude} `
-     var altitude = `Your altitude is: ${location.coords.altitude.toFixed(2)} meters.`
-     
+     var altitude = `Your altitude is: ${(location.coords.altitude * feet).toFixed(2)} feet.`
+    
+      
   }
 
   return (
@@ -55,10 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     backgroundColor: "black",
-    
-    
-    
-    
+
   },
   paragraph: {
     fontSize: 25,
@@ -69,8 +71,7 @@ const styles = StyleSheet.create({
   },
   button: {
     fontSize: 35,
-    
-    
+
   }
 });
 
