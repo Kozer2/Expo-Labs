@@ -18,7 +18,7 @@ Un-Styled is fine. We’re looking for things to buzz, light up, detect movement
 ![Image 1](Assets/image0.png)
 
 
-![Image 2](Assets/image0 (1).png)
+![Image 2](Assets/image0 \(1\).png)
 
 
 # Why
