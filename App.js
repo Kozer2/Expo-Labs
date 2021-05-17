@@ -31,15 +31,17 @@ export default function App() {
   } else if (location) {
     // text = JSON.stringify(location);
      text = `Your location is latitude: ${location.coords.latitude}, longitude: ${location.coords.longitude} `
+     var altitude = `Your altitude is: ${location.coords.altitude.toFixed(2)} meters.`
+     
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{text}</Text>
       <TouchableOpacity
-        onPress={() => alert('This button will one day allow for geo position watching!')}
+        onPress={() => alert(`${altitude}`)}
         style={{ backgroundColor: 'blue', borderRadius: 50, overflow: 'hidden', padding: 15 }}>
-        <Text style={{ fontSize: 35, color: 'white', textAlign: 'center' }}>Button</Text>
+        <Text style={{ fontSize: 35, color: 'white', textAlign: 'center' }}>Show me my Altitude!</Text>
       </TouchableOpacity>
     </View>
     
