@@ -15,7 +15,7 @@ All of your core “features” should be working properly
 Un-Styled is fine. We’re looking for things to buzz, light up, detect movement, etc.  
 
 # Current version
-![Image 1](image0.png)
+![Image 1](Assets/image0.png)
 
 
 ![Image 2](image1.png)
