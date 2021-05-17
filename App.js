@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet, Button } from 'react-native';
+import { Platform, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import * as Location from 'expo-location';
 
 export default function App() {
@@ -36,7 +36,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{text}</Text>
-      <Button title="Watch List"></Button>
+      <TouchableOpacity
+        onPress={() => alert('This button will one day allow for geo position watching!')}
+        style={{ backgroundColor: 'blue', borderRadius: 50, overflow: 'hidden', padding: 15 }}>
+        <Text style={{ fontSize: 35, color: 'white', textAlign: 'center' }}>Button</Text>
+      </TouchableOpacity>
     </View>
     
   );
@@ -48,10 +52,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
+    backgroundColor: "black",
+    
+    
+    
+    
   },
   paragraph: {
     fontSize: 25,
     textAlign: 'center',
+    color: "white",
+    margin: 20,
+    
   },
+  button: {
+    fontSize: 35,
+    
+    
+  }
 });
 
