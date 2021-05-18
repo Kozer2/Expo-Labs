@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
+
 import { Platform, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import * as Location from 'expo-location';
 // used for naviagation
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 
@@ -18,9 +20,14 @@ function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{latNlon.location}</Text>
-      <Button
+      <Button 
         title="Show Altitude"
         onPress={() => navigation.navigate('Altitude')}
+        />
+
+      <Button 
+        title="Show Weather"
+        onPress={() => navigation.navigate('Weather')}
       />
       {/* <TouchableOpacity
         onPress={() => alert(`${altitude}`)}
@@ -49,11 +56,13 @@ function AltitudeScreen() {
 const Stack = createStackNavigator();
 
 export default function App() {
+  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Altitude" component={AltitudeScreen} />
+        <Stack.Screen name="Weather" component={WeatherScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -111,6 +120,19 @@ function useCoords()
   
 }
 
+function WeatherScreen() {
+  return (
+    <View style={styles.container}>
+        <View>
+          <Text style={styles.paragraph}>Weather goes here</Text>
+        </View>
+    </View>
+  );
+}
+  
+
+
+ 
 
 
 
@@ -135,6 +157,11 @@ const styles = StyleSheet.create({
   },
   button: {
     fontSize: 35,
+    backgroundColor: 'blue',
+    borderRadius: 50, 
+    overflow: 'hidden', 
+    padding: 15,
+    width: 100,
 
   }
 });
