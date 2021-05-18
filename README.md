@@ -22,5 +22,5 @@ Un-Styled is fine. We’re looking for things to buzz, light up, detect movement
 
 
 # Why
-This app will allow you to see your current location in latitude and longitude. Currently there also exists a button that when clicked shows the current elevation in feet. 
-Future versions will allow a user to watch a given location and be notified when they move away from it. 
+This app will allow you to see your current location in latitude and longitude, you can also click a button to view your altitude on a new page. Eventually you will also view your weather. 
+
