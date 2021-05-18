@@ -46,6 +46,10 @@ function AltitudeScreen() {
   {
     return alt.error;
   }
+  if(alt.loading == true)
+  {
+    return alt.loading;
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{alt.altitude}</Text>
@@ -116,7 +120,7 @@ function useCoords()
     // text = JSON.stringify(location);
     return  CoordStuff;
   }
-  return  {loading: true};
+  return  {loading: "Loading Screen"};
   
 }
 
