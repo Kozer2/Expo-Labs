@@ -1,6 +1,6 @@
  import React, { useState, useEffect } from 'react';
 
-import { Platform, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { Platform, Text, View, StyleSheet, Button, TouchableOpacity, Switch } from 'react-native';
 import * as Location from 'expo-location';
 // used for naviagation
 import { NavigationContainer } from '@react-navigation/native';
@@ -28,6 +28,10 @@ function HomeScreen({navigation}) {
       <Button 
         title="Show Weather"
         onPress={() => navigation.navigate('Weather')}
+      />
+      <Button 
+        title="Settings"
+        onPress={() => navigation.navigate('Settings')}
       />
       {/* <TouchableOpacity
         onPress={() => alert(`${altitude}`)}
@@ -67,6 +71,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Altitude" component={AltitudeScreen} />
         <Stack.Screen name="Weather" component={WeatherScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -125,6 +130,9 @@ function useCoords()
 }
 
 function WeatherScreen() {
+  const LightOrDark = SettingsScreen();
+
+
   return (
     <View style={styles.container}>
         <View>
@@ -132,6 +140,45 @@ function WeatherScreen() {
         </View>
     </View>
   );
+  
+}
+
+function SettingsScreen() {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  
+  
+  if(isEnabled == true)
+  {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>Light or Dark Mode</Text>
+       
+        <Switch 
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
+              thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+          />
+        </View>
+    );
+  }
+  else{
+    return (
+      <View style={styles.container2}>
+        <Text style={styles.paragraph2}>Light or Dark Mode</Text>
+      
+        <Switch 
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
+              thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+          />
+        </View>
+    );
+  }
 }
   
 
@@ -150,12 +197,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     backgroundColor: "black",
-
+  },
+  container2: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: "white",
   },
   paragraph: {
     fontSize: 25,
     textAlign: 'center',
     color: "white",
+    margin: 20,
+    
+  },
+  paragraph2: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: "black",
     margin: 20,
     
   },
