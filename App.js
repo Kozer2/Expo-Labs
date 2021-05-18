@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Platform, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import * as Location from 'expo-location';
+// used for naviagation
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+
+
+
+function HomeScreen() {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const feet = 3.28084;
@@ -50,6 +56,27 @@ export default function App() {
       </TouchableOpacity>
     </View>
     
+  );
+}
+
+function AltitudeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Your Altitude is:</Text>
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Altitude" component={AltitudeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
