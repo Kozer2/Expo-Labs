@@ -64,7 +64,7 @@ function AltitudeScreen() {
 const Stack = createStackNavigator();
 
 export default function App() {
-  
+  // state goes here theme context    https://github.com/DeltaVCode/cr-dotnet-401d2/blob/4904699f7513199cfc9a6b5d7007d280fb63c9d4/Class39/Demo/my-first-react-app/src/contexts/theme.js
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -144,7 +144,7 @@ function WeatherScreen() {
 }
 
 function SettingsScreen() {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   
   
